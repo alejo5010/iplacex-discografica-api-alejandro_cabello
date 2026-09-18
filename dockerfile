@@ -4,8 +4,7 @@ WORKDIR /app
 COPY . .
 RUN gradle bootJar --no-daemon
 
-# etapa 2: Ejecución con imagen 
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar app.jar
 EXPOSE 8080
